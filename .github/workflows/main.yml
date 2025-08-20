@@ -1,0 +1,28 @@
+# Workflow Name
+name: Say Hello
+
+# Trigger: run on push to main
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Jobs Section
+jobs:
+  say-hello:
+  # Setup our CI server running env, uses latest ubuntu version
+    runs-on: ubuntu-latest
+
+    steps:
+    # Pulls repo code into the runner
+    # @V4 = version four of the checkout action
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+  
+    - name: Say Hello
+      run: echo "Hello World!"
+  
+    # List all the files..
+    - name: List Files
+      run: ls -la
